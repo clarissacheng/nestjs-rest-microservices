@@ -1,6 +1,6 @@
 import { PinoLogger } from 'nestjs-pino'
 import { ClientGrpc, Client } from '@nestjs/microservices'
-import { Controller, Get, Post, Delete, Query, Body, Param, Inject, OnModuleInit, NotFoundException, Header } from '@nestjs/common'
+import { Controller, Get, Post, Delete, Query, Body, Param, OnModuleInit, NotFoundException, Header } from '@nestjs/common'
 import { isEmpty } from 'lodash'
 
 import { QueryUtils } from '../utils/query.utils'
@@ -19,7 +19,7 @@ import { UsersServiceClientOptions } from '../users/users-svc.options'
 
 @Controller('orgs')
 export class OrganizationController implements OnModuleInit {
-  constructor(@Inject('QueryUtils') private readonly queryUtils: QueryUtils, private readonly logger: PinoLogger) {
+  constructor(private readonly queryUtils: QueryUtils, private readonly logger: PinoLogger) {
     logger.setContext(OrganizationController.name)
   }
 

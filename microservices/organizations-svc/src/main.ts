@@ -3,6 +3,7 @@ import { join } from 'path'
 import { NestFactory } from '@nestjs/core'
 import { Transport } from '@nestjs/microservices'
 import { Logger } from 'nestjs-pino'
+import * as grpc from '@grpc/grpc-js'
 
 import { AppModule } from './app.module'
 import { OrganizationsSeeder } from './organizations/organizations.seeder'
@@ -18,7 +19,8 @@ async function bootstrap() {
         enums: String,
         objects: true,
         arrays: true
-      }
+      },
+      credentials: grpc.ServerCredentials.createInsecure()
     }
   })
 

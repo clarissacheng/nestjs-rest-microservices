@@ -1,5 +1,6 @@
 import { join } from 'path'
 import { ClientOptions, Transport } from '@nestjs/microservices'
+import * as grpc from '@grpc/grpc-js'
 
 export const OrganizationsServiceClientOptions: ClientOptions = {
   transport: Transport.GRPC,
@@ -11,6 +12,7 @@ export const OrganizationsServiceClientOptions: ClientOptions = {
       enums: String,
       objects: true,
       arrays: true
-    }
+    },
+    credentials: grpc.credentials.createInsecure()
   }
 }
